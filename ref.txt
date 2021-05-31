@@ -1,5 +1,7 @@
 dependencies needed on top of create-react-app --template typsecript...
 redux
 react-redux
+@types/react
 @types/react-redux
+@types/redux-thunk
 react-thunk

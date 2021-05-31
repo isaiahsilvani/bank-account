@@ -1,24 +1,28 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+// useDipsatch to use action creators
+import { useDispatch } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { actionCreators } from './state/';
 
 function App() {
+
+  const dispatch = useDispatch()
+
+  const { depositMoney, withdrawMoney, bankrupt } = bindActionCreators(actionCreators, dispatch)
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="bankBox">
+        <h1>Your Amount</h1>
+        <h3>0</h3>
+        {/* When we click on a button we want to use an action creator */}
+        <button>Deposit</button>
+        <button>Withdraw</button>
+        <button>Reset</button>
+      </div>
     </div>
   );
 }
