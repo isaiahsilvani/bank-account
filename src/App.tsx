@@ -13,17 +13,18 @@ function App() {
   // action creator functions
   const { depositMoney, withdrawMoney, bankrupt } = bindActionCreators(actionCreators, dispatch)
   // access to current state
-  const state = useSelector((state: State) => state.bank)
+  const amount = useSelector((state: State) => state.bank)
+  console.log(amount)
 
   return (
     <div className="App">
       <div className="bankBox">
         <h1>Your Amount</h1>
-        <h3>0</h3>
+        <h3>{amount}</h3>
         {/* When we click on a button we want to use an action creator */}
-        <button>Deposit</button>
-        <button>Withdraw</button>
-        <button>Reset</button>
+        <button onClick={() => depositMoney(1000)}>Deposit</button>
+        <button onClick={() => withdrawMoney(1000)}>Withdraw</button>
+        <button onClick={() => bankrupt()}>Reset</button>
       </div>
     </div>
   );
