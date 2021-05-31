@@ -12,8 +12,8 @@ const AccountButtons: React.FC<AccountButtonsProps> = ({input}) => {
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     console.log(input)
-    if (input.query || input.account) {
-      console.log('work')
+    if (input.query && input.account) {
+      api.saveRequest(parseInt(input.query), input.account)
     }
   }
 
