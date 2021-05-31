@@ -4,18 +4,22 @@ import { ActionType } from '../action-types/index'
 
 interface DepositAction {
   type: ActionType.DEPOSIT,
-  payload: number
+  payload: number,
+  account: string
 }
 interface WithdrawAction {
   type: ActionType.WITHDRAW,
-  payload: number
+  payload: number,
+  account: string
 }
 interface MultiplyAction {
   type: ActionType.MULTIPLY,
-  payload: number
+  payload: number,
+  account: string
 }
 interface BankruptAction {
-  type: ActionType.BANKRUPT
+  type: ActionType.BANKRUPT,
+  account: string
 }
 // We're saying that the Action is either going to be depo/with/bank action
 // Now typescript has everything it need to infer that action contains a payload

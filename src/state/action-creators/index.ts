@@ -2,37 +2,41 @@ import { ActionType } from "../action-types"
 import { Dispatch } from "redux"    // use Dispatch type from redux to please typescript
 import { Action } from '../actions/index'
 // action creators are functions that dispatch actions
-export const depositMoney = (amount: number) => {
+export const depositMoney = (amount: number, account: string) => {
   return (dispatch: Dispatch<Action>) => {
     dispatch({
       type: ActionType.DEPOSIT,
-      payload: amount
+      payload: amount,
+      account
     })
   }
 }
 
-export const withdrawMoney = (amount: number) => {
+export const withdrawMoney = (amount: number, account: string) => {
   return (dispatch: Dispatch<Action>) => {
     dispatch({
       type: ActionType.WITHDRAW,
-      payload: amount
+      payload: amount,
+      account
     })
   }
 }
 
-export const multiplyMoney = (amount: number) => {
+export const multiplyMoney = (amount: number, account: string) => {
   return (dispatch: Dispatch<Action>) => {
     dispatch({
       type: ActionType.MULTIPLY,
-      payload: amount
+      payload: amount,
+      account
     })
   }
 }
 
-export const bankrupt = () => {
+export const bankrupt = (account: string) => {
   return (dispatch: Dispatch<Action>) => {
     dispatch({
       type: ActionType.BANKRUPT,
+      account
     })
   }
 }

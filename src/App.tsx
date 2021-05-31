@@ -7,10 +7,6 @@ import { bindActionCreators } from 'redux';
 import { actionCreators, State } from './state/';
 import { useState } from 'react'
 
-interface Input {
-  input: String
-}
-
 function App() {
 
   const dispatch = useDispatch()
@@ -19,7 +15,8 @@ function App() {
   // access to current state
   const amount = useSelector((state: State) => state.bank)
   const [input, setInput] = useState({
-    query: ""
+    query: "",
+    account: ""
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
@@ -36,11 +33,12 @@ function App() {
         <h1>Your Amount</h1>
         <h3>{amount}</h3>
         {/* When we click on a button we want to use an action creator */}
-        <button onClick={() => depositMoney(parseInt(input.query))}>Deposit</button>
-        <button onClick={() => withdrawMoney(parseInt(input.query))}>Withdraw</button>
-        <button onClick={() => multiplyMoney(parseInt(input.query))}>Multiply</button>
-        <button onClick={() => bankrupt()}>Reset</button>
-        <input type='text' name='query' value={input.query} onChange={handleChange}></input>
+        <button onClick={() => depositMoney(parseInt(input.query), input.account)}>Deposit</button>
+        <button onClick={() => withdrawMoney(parseInt(input.query),  input.account)}>Withdraw</button>
+        <button onClick={() => multiplyMoney(parseInt(input.query),  input.account)}>Multiply</button>
+        <button onClick={() => bankrupt(input.account)}>Reset</button>
+        <input type='text' name='query' value={input.query} onChange={handleChange} placeholder="value"></input>
+        <input type='text' name='account' value={input.account} onChange={handleChange} placeholder="account"></input>
       </div>
     </div>
   );
