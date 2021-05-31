@@ -2,16 +2,18 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 // useDipsatch to use action creators
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import { actionCreators } from './state/';
+import { actionCreators, State } from './state/';
+
 
 function App() {
 
   const dispatch = useDispatch()
-
+  // action creator functions
   const { depositMoney, withdrawMoney, bankrupt } = bindActionCreators(actionCreators, dispatch)
-
+  // access to current state
+  const state = useSelector((state: State) => state.bank)
 
   return (
     <div className="App">
