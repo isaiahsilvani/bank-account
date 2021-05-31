@@ -20,6 +20,15 @@ export const withdrawMoney = (amount: number) => {
   }
 }
 
+export const multiplyMoney = (amount: number) => {
+  return (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.MULTIPLY,
+      payload: amount
+    })
+  }
+}
+
 export const bankrupt = () => {
   return (dispatch: Dispatch<Action>) => {
     dispatch({

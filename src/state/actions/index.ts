@@ -10,9 +10,13 @@ interface WithdrawAction {
   type: ActionType.WITHDRAW,
   payload: number
 }
+interface MultiplyAction {
+  type: ActionType.MULTIPLY,
+  payload: number
+}
 interface BankruptAction {
   type: ActionType.BANKRUPT
 }
 // We're saying that the Action is either going to be depo/with/bank action
 // Now typescript has everything it need to infer that action contains a payload
-export type Action = DepositAction | WithdrawAction | BankruptAction
+export type Action = DepositAction | WithdrawAction | MultiplyAction | BankruptAction
