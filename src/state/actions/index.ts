@@ -1,18 +1,17 @@
-// This is how our actions are going to always look, so create the type
-// {
-//   type: string,
-//   payload?: number
-// }
+// use enum for abstraction
+import { ActionType } from '../action-types/index'
+
+
 interface DepositAction {
-  type: "deposit",
+  type: ActionType.DEPOSIT,
   payload: number
 }
 interface WithdrawAction {
-  type: "withdraw",
+  type: ActionType.WITHDRAW,
   payload: number
 }
 interface BankruptAction {
-  type: "bankrupt"
+  type: ActionType.BANKRUPT
 }
 // We're saying that the Action is either going to be depo/with/bank action
 // Now typescript has everything it need to infer that action contains a payload
