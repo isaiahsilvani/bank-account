@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 import { Action } from '../state/actions/index'
 
-const baseUrl: string = 'http://localhost:1337/'
+const baseUrl: string = 'http://localhost:1337/api/'
 
 export const saveRequest = async (state: number, action: string) => {
   try {
