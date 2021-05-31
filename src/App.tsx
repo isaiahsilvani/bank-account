@@ -6,12 +6,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { actionCreators, State } from './state/';
 import { useState } from 'react'
+import * as api from './services/api';
+import AccountButtons from './components/AccountButtons'
 
 function App() {
-
   const dispatch = useDispatch()
   // action creator functions
-  const { depositMoney, withdrawMoney, multiplyMoney,bankrupt } = bindActionCreators(actionCreators, dispatch)
+  const { depositMoney, withdrawMoney, multiplyMoney, bankrupt } = bindActionCreators(actionCreators, dispatch)
   // access to current state
   const amount = useSelector((state: State) => state.bank)
   const [input, setInput] = useState({
@@ -37,8 +38,11 @@ function App() {
         <button onClick={() => withdrawMoney(parseInt(input.query),  input.account)}>Withdraw</button>
         <button onClick={() => multiplyMoney(parseInt(input.query),  input.account)}>Multiply</button>
         <button onClick={() => bankrupt(input.account)}>Reset</button>
+        <br></br>
         <input type='text' name='query' value={input.query} onChange={handleChange} placeholder="value"></input>
         <input type='text' name='account' value={input.account} onChange={handleChange} placeholder="account"></input>
+        <br></br>
+        <AccountButtons input={input}/>
       </div>
     </div>
   );

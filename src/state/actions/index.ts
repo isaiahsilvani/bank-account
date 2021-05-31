@@ -17,10 +17,15 @@ interface MultiplyAction {
   payload: number,
   account: string
 }
+interface ApiAction {
+  type: string,
+  payload: number,
+  account: string
+}
 interface BankruptAction {
   type: ActionType.BANKRUPT,
   account: string
 }
 // We're saying that the Action is either going to be depo/with/bank action
 // Now typescript has everything it need to infer that action contains a payload
-export type Action = DepositAction | WithdrawAction | MultiplyAction | BankruptAction
+export type Action = DepositAction | WithdrawAction | MultiplyAction | BankruptAction | ApiAction
