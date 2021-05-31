@@ -19,11 +19,11 @@ const AccountButtons: React.FC<AccountButtonsProps> = ({input}) => {
     if (input.query && input.account) {
       switch (name){
         case "save":
-          return api.saveRequest(parseInt(amount), input.account)
+          return api.saveRequest(parseInt(input.query), input.account)
         case "fetch":
-          return api.fetchRequest(parseInt(amount), input.account)
+          return api.fetchRequest(parseInt(input.query), input.account)
         case "delete":
-          return api.deleteRequest(parseInt(amount), input.account)
+          return api.deleteRequest(parseInt(input.query), input.account)
         default:
           return null
       }

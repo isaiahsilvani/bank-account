@@ -27,7 +27,15 @@ export const fetchRequest = async (state: number, action: string) => {
     const payload: AxiosResponse<ApiDataType> = await axios.get(
       baseUrl + action
     )
-    return payload
+    console.log('returned payload', payload.data.message)
+    switch(payload.data.message){
+      case "Account found":
+        return console.log('account found')
+      case "No account found":
+        return console.log('No account found')
+      default:
+        return null
+    }
   } catch (error) {
     throw new Error(error)
   }
