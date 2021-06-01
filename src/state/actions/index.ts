@@ -1,7 +1,6 @@
 // use enum for abstraction
 import { ActionType } from '../action-types/index'
 
-
 interface DepositAction {
   type: ActionType.DEPOSIT,
   payload: number,

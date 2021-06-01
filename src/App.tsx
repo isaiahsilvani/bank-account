@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 // useDipsatch to use action creators
 import { useDispatch, useSelector } from 'react-redux'
@@ -29,7 +28,6 @@ function App() {
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     const element = event.currentTarget as HTMLInputElement
     const name = element.name
-    console.log(name)
     if (input.query && input.account) {
       // save to database at the end of switch when state is changed
       switch (name){
