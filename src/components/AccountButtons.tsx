@@ -1,6 +1,8 @@
 import React from 'react'
 import * as api from '../services/api'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { actionCreators, State } from '../state/';
 
 interface AccountButtonsProps {
   input: {
@@ -9,10 +11,9 @@ interface AccountButtonsProps {
   }
 }
 
-
 const AccountButtons: React.FC<AccountButtonsProps> = ({input}) => {
-
-  const amount = useSelector((state: State) => state.bank)
+  const dispatch = useDispatch()
+  const { setMoney } = bindActionCreators(actionCreators, dispatch)
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     const element = event.currentTarget as HTMLInputElement
@@ -23,8 +24,10 @@ const AccountButtons: React.FC<AccountButtonsProps> = ({input}) => {
           return api.saveRequest(parseInt(input.query), input.account)
         case "fetch":
           api.fetchRequest(parseInt(input.query), input.account)
-          .then((data) => {
-            return console.log('heres the data', data)
+          
+          .then(data => {
+            console.log('here is that', typeof data, data)
+            setMoney(data)
           })
           break;
         case "delete":

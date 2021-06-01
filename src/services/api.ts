@@ -1,9 +1,19 @@
 import axios, { AxiosResponse } from 'axios'
-import { Action } from '../state/actions/index'
+import { bindActionCreators } from 'redux';
+import { actionCreators, State } from '../state';
+import { useDispatch, useSelector } from 'react-redux'
+import { store } from '../state/store'
 
 const baseUrl: string = 'http://localhost:1337/api/'
 
+interface SetMoney {
+  SetMoney: object,
+  type: string,
+  amount: number
+}
+
 export const saveRequest = async (state: number, action: string) => {
+
   try {
     const payload = {
       action,
@@ -27,10 +37,13 @@ export const fetchRequest = async (state: number, action: string) => {
     const payload: AxiosResponse<ApiDataType> = await axios.get(
       baseUrl + action
     )
-    console.log('returned payload', payload.data.account.account)
+    
     switch(payload.data.message){
       case "Account found":
-        return await payload
+        // Set the state to the payload's amount
+        console.log('account found client api')
+        // THIS FIXED THE "null" IS NOT ASSIBNABLE TO "number" yes!!!!
+        return await payload.data.account.amount as any
       case "No account found":
         return console.log('No account found')
       default:
