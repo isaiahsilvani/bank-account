@@ -9,6 +9,7 @@ interface AccountButtonsProps {
   }
 }
 
+
 const AccountButtons: React.FC<AccountButtonsProps> = ({input}) => {
 
   const amount = useSelector((state: State) => state.bank)
@@ -21,7 +22,11 @@ const AccountButtons: React.FC<AccountButtonsProps> = ({input}) => {
         case "save":
           return api.saveRequest(parseInt(input.query), input.account)
         case "fetch":
-          return api.fetchRequest(parseInt(input.query), input.account)
+          api.fetchRequest(parseInt(input.query), input.account)
+          .then((data) => {
+            return console.log('heres the data', data)
+          })
+          break;
         case "delete":
           return api.deleteRequest(parseInt(input.query), input.account)
         default:

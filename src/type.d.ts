@@ -1,8 +1,14 @@
 type ApiDataType = {
-  account: string,
+  account: {
+    account: string,
+    amount: number
+  },
   payload: number,
   type: string,
-  message: string
+  message: string,
+  ApiResults: {
+
+  }
 }
 
 type State = EmptyObject & {
