@@ -13,6 +13,7 @@ interface AccountButtonsProps {
 
 const AccountButtons: React.FC<AccountButtonsProps> = ({input}) => {
   const dispatch = useDispatch()
+  const amount = useSelector((state: State) => state.bank)
   const { setMoney } = bindActionCreators(actionCreators, dispatch)
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -21,7 +22,7 @@ const AccountButtons: React.FC<AccountButtonsProps> = ({input}) => {
     if (input.query && input.account) {
       switch (name){
         case "save":
-          return api.saveRequest(parseInt(input.query), input.account)
+          return api.saveRequest(amount, input.account)
         case "fetch":
           api.fetchRequest(parseInt(input.query), input.account)
           
