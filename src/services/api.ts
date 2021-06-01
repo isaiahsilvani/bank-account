@@ -57,11 +57,13 @@ export const fetchRequest = async (state: number, action: string) => {
 // get the name and delete the account if it's in the database
 export const deleteRequest = async (state: number, action: string) => {
   console.log(state, action)
+  console.log(baseUrl + action)
   try {
     const payload: AxiosResponse<ApiDataType> = await axios.delete(
       baseUrl + action
     )
-    return payload
+    console.log('payload from client api', payload.data)
+    return payload.data
   } catch (error) {
     throw new Error(error)
   }

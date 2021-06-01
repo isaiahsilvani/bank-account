@@ -21,18 +21,20 @@ const AccountButtons: React.FC<AccountButtonsProps> = ({input}) => {
     const name = element.name
     if (input.query && input.account) {
       switch (name){
-        case "save":
-          return api.saveRequest(amount, input.account)
         case "fetch":
           api.fetchRequest(parseInt(input.query), input.account)
-          
           .then(data => {
             console.log('here is that', typeof data, data)
-            setMoney(data)
+            if (data){ setMoney(data) }
           })
           break;
         case "delete":
-          return api.deleteRequest(parseInt(input.query), input.account)
+          api.deleteRequest(parseInt(input.query), input.account)
+          .then(data => {
+            console.log(data)
+            if (data){ setMoney(0) }
+          })
+          break
         default:
           return null
       }
@@ -42,7 +44,6 @@ const AccountButtons: React.FC<AccountButtonsProps> = ({input}) => {
 
   return (
     <div className="accountBtns">
-      <button onClick={handleClick} name="save">Save to Account</button>
       <button onClick={handleClick} name="fetch">Fetch from Account</button>
       <button onClick={handleClick} name="delete">Delete Account</button>
     </div>

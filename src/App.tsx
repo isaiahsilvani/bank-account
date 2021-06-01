@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { actionCreators, State } from './state/';
 import { useState } from 'react'
-import * as api from './services/api';
 import AccountButtons from './components/AccountButtons'
 
 function App() {
@@ -32,6 +31,7 @@ function App() {
     const name = element.name
     console.log(name)
     if (input.query && input.account) {
+      // save to database at the end of switch when state is changed
       switch (name){
         case "deposit":
           depositMoney(parseInt(input.query),  input.account)
