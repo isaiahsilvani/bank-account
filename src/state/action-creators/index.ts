@@ -34,7 +34,6 @@ export const multiplyMoney = (amount: number, account: string) => {
 
 export const bankrupt = (account: string) => {
   return (dispatch: Dispatch<Action>) => {
-    console.log('hit!!')
     dispatch({
       type: ActionType.BANKRUPT,
       account
@@ -42,12 +41,12 @@ export const bankrupt = (account: string) => {
   }
 }
 
-export const setMoney = (amount: number) => {
+export const setMoney = (payload: number) => {
   return (dispatch: Dispatch<Action>) => {
-    console.log('setMoney action-creator', amount)
+    console.log('setMoney action-creator. Amount: ', payload)
     dispatch({
       type: ActionType.SET,
-      amount
+      payload
     })
   }
 }

@@ -28,7 +28,7 @@ interface BankruptAction {
 }
 interface SetAction {
   type: ActionType.SET,
-  amount: null | number | void
+  payload: null | number | void
 }
 // We're saying that the Action is either going to be depo/with/bank action
 // Now typescript has everything it need to infer that action contains a payload

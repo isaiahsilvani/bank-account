@@ -15,6 +15,8 @@ const reducer = (state: number = initialState, action: Action) => {
       return state * action.payload  //every action needs it's own type
     case ActionType.BANKRUPT:  // try putting action.payload here and see the error. That's so cool!
       return 0
+    case ActionType.SET:
+      return action.payload
     default:
       return state
   }
