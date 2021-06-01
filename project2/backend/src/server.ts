@@ -12,7 +12,11 @@ const PORT = config.server.port
 const io = new Server(server, { cors: {origin: "http://localhost:3000"}})
 
 io.on("connection", (socket) => {
-  console.log("client connected")
+  socket.on('msg', ({ data }) => {
+    console.log(data)
+
+    socket.emit('recieveMsg', ({ data }))
+  })
 })
 
 
