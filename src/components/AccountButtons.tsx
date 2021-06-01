@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { actionCreators, State } from '../state/';
 
+// Clean up code by removing query from input field, you just need account
 interface AccountButtonsProps {
   input: {
     query: string,
@@ -19,7 +20,7 @@ const AccountButtons: React.FC<AccountButtonsProps> = ({input}) => {
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     const element = event.currentTarget as HTMLInputElement
     const name = element.name
-    if (input.query && input.account) {
+    if (input.account) {
       switch (name){
         case "fetch":
           api.fetchRequest(parseInt(input.query), input.account)
@@ -44,7 +45,7 @@ const AccountButtons: React.FC<AccountButtonsProps> = ({input}) => {
 
   return (
     <div className="accountBtns">
-      <button onClick={handleClick} name="fetch">Fetch from Account</button>
+      <button onClick={handleClick} name="fetch">Fetch Account</button>
       <button onClick={handleClick} name="delete">Delete Account</button>
     </div>
   );
