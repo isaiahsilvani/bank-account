@@ -5,7 +5,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { actionCreators, State } from './state/';
 import { useState } from 'react'
+import styles from './styles/input.module.css'
 import AccountButtons from './components/AccountButtons'
+import { InputBlock, Balance, YourBalance, Header, Background, Buttons, Button } from './AppStyle'
+
+
 
 function App() {
   const dispatch = useDispatch()
@@ -51,20 +55,27 @@ function App() {
 
   return (
     <div className="App">
-      <div className="bankBox">
-        <h1>Your Amount</h1>
-        <h3>{amount}</h3>
-        {/* When we click on a button we want to use an action creator */}
-        <button onClick={handleClick} name="deposit">Deposit</button>
-        <button onClick={handleClick} name="withdraw">Withdraw</button>
-        <button onClick={handleClick} name="multiply">Multiply</button>
-        <button onClick={handleClick} name="bankrupt">Reset</button>
-        <br></br>
-        <input type='text' name='query' value={input.query} onChange={handleChange} placeholder="value"></input>
-        <input type='text' name='account' value={input.account} onChange={handleChange} placeholder="account"></input>
-        <br></br>
-        <AccountButtons input={input}/>
-      </div>
+      <Background>
+        <div>
+          <Header>Bank Account</Header>
+          <YourBalance>Your Balance</YourBalance>
+          <Balance>{amount}</Balance>
+          {/* When we click on a button we want to use an action creator */}
+          <Buttons>
+            <Button onClick={handleClick} name="deposit">+</Button>
+            <Button onClick={handleClick} name="withdraw">-</Button>
+            <Button onClick={handleClick} name="multiply">*</Button>
+            <Button onClick={handleClick} name="bankrupt">x</Button>
+          </Buttons>
+          <br></br>
+          <InputBlock>
+            <input className={styles.input} type='text' name='query' value={input.query} onChange={handleChange} placeholder="value"></input>
+            <input className={styles.input} type='text' name='account' value={input.account} onChange={handleChange} placeholder="account"></input>
+          </InputBlock>
+          <br></br>
+          <AccountButtons input={input}/>
+        </div>
+      </Background>
     </div>
   );
 }

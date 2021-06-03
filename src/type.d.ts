@@ -13,4 +13,9 @@ type ApiDataType = {
 
 type State = EmptyObject & {
   bank: number;
+  username: string,
+}
+
+type variantColor = {
+  variant: string
 }
