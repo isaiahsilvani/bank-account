@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { css, jsx } from '@emotion/react'
 
 export const Header = styled.div`
   background-color: #CD1409;
@@ -100,13 +99,6 @@ export const TextBlock = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-`
-
-export const Bottom = styled.div`
-  background: rgb(0,0,0);
-  background: linear-gradient(0deg, rgba(0,0,0,0.8799076212471132) 95%, rgba(205,20,9,1) 100%);
-  height: 40vh;
-  width: 100%;
 `
 
 export const Input = styled.div`

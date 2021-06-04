@@ -3,7 +3,8 @@ export enum ActionType {
   WITHDRAW = "withdraw",
   BANKRUPT = "bankrupt",
   MULTIPLY = "multiply",
-  SET = 'set'
+  SET = 'set',
+  SETUSERNAME = 'setusername'
 }
 
 // enum has to be one of the specific things we put inside enum

@@ -12,6 +12,15 @@ export const depositMoney = (amount: number, account: string) => {
   }
 }
 
+export const setAccount = (account: string) => {
+  return (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.SETUSERNAME,
+      account
+    })
+  }
+}
+
 export const withdrawMoney = (amount: number, account: string) => {
   return (dispatch: Dispatch<Action>) => {
     dispatch({
@@ -43,7 +52,6 @@ export const bankrupt = (account: string) => {
 
 export const setMoney = (payload: number) => {
   return (dispatch: Dispatch<Action>) => {
-    console.log('setMoney action-creator. Amount: ', payload)
     dispatch({
       type: ActionType.SET,
       payload

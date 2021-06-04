@@ -7,16 +7,16 @@ import { actionCreators, State } from './state/';
 import { useState } from 'react'
 import styles from './styles/input.module.css'
 import AccountButtons from './components/AccountButtons'
-import { P, TextBlock, HowTo, InputBlock, Balance, YourBalance, Header, Background, Buttons, Button, Red, Bottom } from './AppStyle'
-
+import { P, TextBlock, HowTo, InputBlock, Balance, YourBalance, Header, Background, Buttons, Button, Red } from './AppStyle'
 
 
 function App() {
   const dispatch = useDispatch()
   // action creator functions
-  const { depositMoney, withdrawMoney, multiplyMoney, bankrupt } = bindActionCreators(actionCreators, dispatch)
+  const { depositMoney, withdrawMoney, multiplyMoney, bankrupt, setAccount } = bindActionCreators(actionCreators, dispatch)
   // access to current state
   const amount = useSelector((state: State) => state.bank)
+  const accountName = useSelector((state: State) => state.account)
   const [input, setInput] = useState({
     query: "",
     account: ""
@@ -33,6 +33,8 @@ function App() {
     const element = event.currentTarget as HTMLInputElement
     const name = element.name
     if (input.query && input.account) {
+      setAccount(input.account)
+
       // save to database at the end of switch when state is changed
       switch (name){
         case "deposit":
@@ -58,7 +60,7 @@ function App() {
       <Background>
         <div>
           <Header>Bank Account</Header>
-            <YourBalance>Your Balance</YourBalance>
+            <YourBalance>{accountName ? <>{accountName}'s Balance</> : "Input an account to get started"}</YourBalance>
             <Balance>{amount}</Balance>
           {/* When we click on a button we want to use an action creator */}
           <Buttons>
