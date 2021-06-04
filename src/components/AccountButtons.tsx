@@ -9,7 +9,6 @@ import styled from '@emotion/styled'
 
 const AccountBlock = styled.div`
   padding: 10px;
-  background-color: lightblue;
   display: flex;
   justify-content: center;
 `

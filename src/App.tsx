@@ -7,7 +7,7 @@ import { actionCreators, State } from './state/';
 import { useState } from 'react'
 import styles from './styles/input.module.css'
 import AccountButtons from './components/AccountButtons'
-import { InputBlock, Balance, YourBalance, Header, Background, Buttons, Button } from './AppStyle'
+import { P, TextBlock, HowTo, InputBlock, Balance, YourBalance, Header, Background, Buttons, Button, Red, Bottom } from './AppStyle'
 
 
 
@@ -58,8 +58,8 @@ function App() {
       <Background>
         <div>
           <Header>Bank Account</Header>
-          <YourBalance>Your Balance</YourBalance>
-          <Balance>{amount}</Balance>
+            <YourBalance>Your Balance</YourBalance>
+            <Balance>{amount}</Balance>
           {/* When we click on a button we want to use an action creator */}
           <Buttons>
             <Button onClick={handleClick} name="deposit">+</Button>
@@ -67,6 +67,7 @@ function App() {
             <Button onClick={handleClick} name="multiply">*</Button>
             <Button onClick={handleClick} name="bankrupt">x</Button>
           </Buttons>
+          <Red>
           <br></br>
           <InputBlock>
             <input className={styles.input} type='text' name='query' value={input.query} onChange={handleChange} placeholder="value"></input>
@@ -74,6 +75,16 @@ function App() {
           </InputBlock>
           <br></br>
           <AccountButtons input={input}/>
+          <HowTo>
+              <TextBlock>
+                <h4>How to use this app</h4>
+                <P>1. Input an account name, select a value, and then an operation. </P>
+                <P>2. Accounts are automatically created. Use Fetch Account to get an account's balance.</P>
+                <P>3. Deleting an account will delete it's record from the database.</P>
+                <P>4. An account name must be inputted to update the balance.</P>
+              </TextBlock>
+          </HowTo>
+          </Red>
         </div>
       </Background>
     </div>
